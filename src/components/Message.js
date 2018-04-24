@@ -14,16 +14,17 @@ export class Message extends Component {
       return null;
     }
 
-    return <div className={"message-row " + (this.props.isSelf ? ' self right' : ' left')}>
+    return <li className={" " + (this.props.isSelf ? ' self ' : ' other ')}>
+    <div className="avatar">        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50"/>      </div>
       <div className="message">
-        <div className="body">
-          {messageObj.body}
-        </div>
-        <div className="status">
-          {moment(messageObj.date).fromNow()}
+        <div className="messages">
+          <p>{messageObj.body}</p>
+          <div className="status">
+          <time>{moment(messageObj.date).fromNow()}</time>
           <FontAwesomeIcon icon={messageObj.encrypted ? 'lock' : 'lock-open'} className="sec-icon"/>
+          </div>
         </div>
       </div>
-    </div>
+    </li>;
   }
 }

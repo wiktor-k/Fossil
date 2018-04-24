@@ -39,7 +39,7 @@ export class Chat extends Component {
         </div>
         <div className="name">{this.contact.getDisplayName()}</div>
       </div>
-      <div className="message-list" ref={(item) => this.messageList = item}>
+      <ol className="discussion" ref={(item) => this.messageList = item}>
         {this.contact.getTimelineItems()
           .filter((message) => !!message.body)
           .map((message) => {
@@ -47,7 +47,7 @@ export class Chat extends Component {
 
             return <Message isSelf={messageJid.bare === this.props.owner.bare} key={message.id} message={message}/>
           })}
-      </div>
+      </ol>
       <Composer chat={this.contact}/>
     </div>
   }
